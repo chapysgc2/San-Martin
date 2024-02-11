@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { LogueoService } from 'src/app/services/logueo.service';
+import { CarritoComprasService } from 'src/app/services/carritocompras.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  constructor(private logueoService: LogueoService,private router:Router, private carritoService : CarritoComprasService) { }
+
 
   inicioseccion: number = 1;  // Declarar como propiedad de la clase
   name: string = '';
+  bandera = false;
+ 
+  cantidadProductos = 0;
   ngOnInit(): void {
     // Leer el objeto almacenado en localStorage
     const storedInicioSeccion = localStorage.getItem('info');
@@ -19,6 +26,9 @@ export class NavbarComponent implements OnInit {
  // Verificar si hay un valor almacenado en localStorage
  if (storedInicioSeccionname !== null) {
   this.name = JSON.parse(storedInicioSeccionname).name;
+  this.carritoService.productosSignals.subscribe(productos => {
+    this.cantidadProductos = productos.length;
+  });
  
 
 }
