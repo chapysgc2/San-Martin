@@ -1,7 +1,7 @@
 <nav *ngIf="inicioseccion === 0">
     <div class="nav-wrapper red darken-4">
         <a class="brand-logo" href="/"><img src="./assets/pngwing.com.png" id="imagen-logo" alt="logo-temp"></a>
-        <ul id="nav-mobile" *ngIf="bandera==false"  class="right hide-on-med-and-down">
+        <ul id="nav-mobile"  class="right hide-on-med-and-down">
             <li><div class="nav-wrapper">
                 <form>
                   <div class="input-field">
@@ -11,7 +11,7 @@
                   </div>
                 </form>
               </div></li>
-            <li><a href="inicioSesion">Iniciar Sesion</a></li>
+            <li><a href="/in" (click)="inicio1()" >Iniciar Sesion</a></li>
             
         </ul>
     </div>
@@ -20,7 +20,7 @@
 <nav *ngIf="inicioseccion === 1">
     <div class="nav-wrapper red darken-4">
       <a class="brand-logo" href="/"><img src="./assets/pngwing.com.png" id="imagen-logo" alt="logo-temp"></a>
-      <ul id="nav-mobile" *ngIf="bandera == false" class="right hide-on-med-and-down">
+      <ul id="nav-mobile"  class="right hide-on-med-and-down">
         <li><div class="nav-wrapper">
             <form>
               <div class="input-field">
@@ -31,7 +31,12 @@
             </form>
           </div></li>
         <li><a href="/carritocompras"><i class="large material-icons">add_shopping_cart</i></a></li>
-        <li><a href="">brandon</a></li>
+        <li><a href="">{{name}}</a></li>
+        <li><a href="/" (click)="salir()"><i class=>salir</i></a></li>
       </ul>
     </div>
   </nav>
+  
+<div *ngIf="inicioseccion === 2">
+  
+</div>

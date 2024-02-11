@@ -12,6 +12,7 @@ import { SeguimientoPedidosComponent } from './components/seguimientopedidos/seg
 import { ReportesVentasComponent } from './components/reportesventas/reportesventas.component';
 import { SoporteClienteComponent } from './components/soportecliente/soportecliente.component';
 import { HomeComponent } from './components/home/home.component';
+import { inicioseccion } from './components/inicio-sesion/inicio-sesion.component';
 
 
 const routs : Routes = [
@@ -19,7 +20,10 @@ const routs : Routes = [
     path: "",
     component: HomeComponent,
   },
-  
+  {
+    path: "in",
+    component: inicioseccion,
+  },
   {
     path: 'contacto',
     component: AboutComponent,
