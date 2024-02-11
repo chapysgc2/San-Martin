@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LogueoService } from 'src/app/services/logueo.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +20,7 @@ export class NavbarComponent implements OnInit {
  if (storedInicioSeccionname !== null) {
   this.name = JSON.parse(storedInicioSeccionname).name;
  
+
 }
     // Verificar si hay un valor almacenado en localStorage
     if (storedInicioSeccion !== null) {
