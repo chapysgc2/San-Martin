@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DetalleCarrito } from 'src/app/models/detallecarrito.models';
 import { DetalleCarritoService } from 'src/app/services/detallecarrito.service'; // Asegúrate de importar el servicio
 import { HttpHeaders, HttpClient } from '@angular/common/http'; // Importa los módulos necesarios
+import { CarritoComprasService } from 'src/app/services/carritocompras.service'; // Asegúrate de importar el servicio
+import { Producto } from 'src/app/models/productos.models';
 
 @Component({
   selector: 'app-detallecarrito',
@@ -9,11 +11,35 @@ import { HttpHeaders, HttpClient } from '@angular/common/http'; // Importa los m
   styleUrls: ['./detallecarrito.component.css']
 })
 export class DetalleCarritoComponent implements OnInit {
+  productosEnCarrito: Producto[] = [];
+  totalCarrito: number = 0;
 
-  constructor(private detalleCarritoService: DetalleCarritoService, private http: HttpClient) { }
+  
+  constructor(private detalleCarritoService: DetalleCarritoService, private http: HttpClient, private carritoService: CarritoComprasService) { }
 
   ngOnInit(): void {
     // Puedes realizar inicializaciones adicionales aquí si es necesario
+
+    this.carritoService.productosSignals.subscribe(productos => {
+      this.productosEnCarrito = productos;
+      this.actualizarTotalCarrito();
+    });
+  }
+
+  irAlPago(){
+    
+  }
+
+  eliminarDelCarrito(productoID: number) {
+    this.carritoService.eliminarProductoPorID(productoID);
+  }
+
+  vaciarCarrito() {
+    this.carritoService.vaciarCarrito();
+  }
+
+  private actualizarTotalCarrito() {
+    this.totalCarrito = this.productosEnCarrito.reduce((total, producto) => total + producto.precio, 0);
   }
 
   mostrarDetalleCarrito(detallecarritoID: number): void {
