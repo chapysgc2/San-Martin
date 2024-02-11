@@ -14,24 +14,28 @@
             <li><a href="inicioSesion">Iniciar Sesion</a></li>
             
         </ul>
+        <app-carritocompras></app-carritocompras>
     </div>
 </nav>
 
 <nav *ngIf="inicioseccion === 1">
     <div class="nav-wrapper red darken-4">
       <a class="brand-logo" href="/"><img src="./assets/pngwing.com.png" id="imagen-logo" alt="logo-temp"></a>
+      
       <ul id="nav-mobile" *ngIf="bandera == false" class="right hide-on-med-and-down">
         <li><div class="nav-wrapper">
-            <form>
+            <!-- <form>
               <div class="input-field">
                 <input id="search" type="search" required>
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
-            </form>
+            </form> -->
           </div></li>
-        <li><a href="/carritocompras"><i class="large material-icons">add_shopping_cart</i></a></li>
-        <li><a href="">brandon</a></li>
+        <li>
+            <a href="/carritocompras"><i class="material-icons left">shopping_cart</i><span class="new badge blue">{{cantidadProductos}}</span></a> 
+        </li>
+        <li><a href="/detallecompra">brandon</a></li>
       </ul>
     </div>
   </nav>

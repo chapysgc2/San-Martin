@@ -9,6 +9,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http'; // Importa los m
   styleUrls: ['./carritocompras.component.css']
 })
 export class CarritoComprasComponent implements OnInit {
+  cantidadProductos = 0;
   carrito: CarritoCompras;
 
   constructor(private carritoService: CarritoComprasService, private http: HttpClient) {
@@ -16,7 +17,15 @@ export class CarritoComprasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //PRUEBAS CARRITO
     // Puedes realizar inicializaciones adicionales aquí si es necesario
+    this.carritoService.productosSignals.subscribe(productos => {
+      this.cantidadProductos = productos.length;
+    })
+  }
+
+  agregarProductoAlCarrito(producto: any){
+    this.carritoService.agregarProducto("Hola");
   }
 
   // Método para mostrar un carrito de compras por su ID

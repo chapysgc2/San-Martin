@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogueoService } from 'src/app/services/logueo.service';
+import { CarritoComprasService } from 'src/app/services/carritocompras.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,10 @@ import { LogueoService } from 'src/app/services/logueo.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private logueoService: LogueoService,private router:Router) { }
+  constructor(private logueoService: LogueoService,private router:Router, private carritoService : CarritoComprasService) { }
   bandera = false;
   inicioseccion=1
+  cantidadProductos = 0;
   ngOnInit(): void {
     if (localStorage.getItem("id_Rol")=='0') {
       this.bandera=true;
@@ -23,6 +25,10 @@ export class NavbarComponent implements OnInit {
       //console.log(data.data)
       this.bandera=data.data
     })
+
+    this.carritoService.productosSignals.subscribe(productos => {
+      this.cantidadProductos = productos.length;
+    });
   }
   logout(){
     //console.log("Cerrando sesion");
