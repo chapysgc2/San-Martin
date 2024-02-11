@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private logueoService: LogueoService,private router:Router) { }
   bandera = false;
+  inicioseccion=1
   ngOnInit(): void {
     if (localStorage.getItem("id_Rol")=='0') {
       this.bandera=true;
