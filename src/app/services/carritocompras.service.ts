@@ -11,17 +11,32 @@ import { headers } from '../models/Header';
 export class CarritoComprasService {
     private productos: any[] = [];
     productosSignals = new BehaviorSubject<any[]>([]);
+    private carritoKey = 'carrito';
     
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        const storedCarrito = localStorage.getItem(this.carritoKey);
+        if (storedCarrito){
+            this.productos = JSON.parse(storedCarrito);
+            this.productosSignals.next(this.productos);
+        }
+    }
 
     agregarProducto(producto: any){
         this.productos.push(producto);
-        this.productosSignals.next(this.productos);
+        this.actualizarLocalStorage();
     }
+
     eliminarProducto(index: number) {
         this.productos.splice(index, 1);
+        this.actualizarLocalStorage();
+    }
+
+    private actualizarLocalStorage() {
+        // Guarda los productos del carrito en el localStorage
+        localStorage.setItem(this.carritoKey, JSON.stringify(this.productos));
+        // Emite el nuevo arreglo de productos a los suscriptores
         this.productosSignals.next(this.productos);
-      }
+    }
 
     mostrarCarritoCompras(carritoID: number) {
         return this.http.get(`${environment.API_URI}/api/CarritoCompras/mostrarCarritoCompras/${carritoID}`, { headers: headers });

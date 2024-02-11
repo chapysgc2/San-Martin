@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
     this.carritoService.productosSignals.subscribe(productos => {
       this.cantidadProductos = productos.length;
     });
+
   }
   logout(){
     //console.log("Cerrando sesion");
