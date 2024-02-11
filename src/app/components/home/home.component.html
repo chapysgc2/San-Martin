@@ -1,46 +1,46 @@
 <div class="row red lighten-2">
-    <div class="col s12">
-        <h1 id="titulo">Paleteria</h1>
-    </div>
-    <div class="col s6"> 
-        <div class="carousel">
-        <a class="carousel-item" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFXf1zYETGex4_Sa-5uesId8Z_ICQ3fRl-Ug&usqp=CAU"></a>
-        <a class="carousel-item" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvFvQ9LriiR9tls7kHolbCzEuMJljOBwVong&usqp=CAU"></a>
-        <a class="carousel-item" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKo-P1C4BA9fczMVTmUqjLUq2llADyh4tjlQ&usqp=CAU"></a>
-        <a class="carousel-item" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-n0iDXMBs8koniF0NTS4QvgQd6WvLiQM6MQ&usqp=CAU"></a>
-      </div>
-    </div>
-    <div class="col s6">
-        <div class="" id="prueba">
-            Nuestro exclusivo catálogo de paletas artesanales está diseñado para satisfacer todos los paladares y
-            para aquellos que buscan algo
-            más que un simple helado.Desde exquisitas combinaciones de frutas frescas hasta caprichosas mezclas de
-            chocolates gourmet, cada paleta
-            es una explosión de felicidad congelada
-        </div>
-    </div>
-
-    <div class="row">
+    <div class="row red lighten-2">
         <div class="col s12">
-          <h1 id="titulo">Catálogo de Productos</h1>
+            <h1 id="titulo">Pinturas</h1>
         </div>
-      
-        <div class="col s12 m6 l4" *ngFor="let producto of catalogoProductos">
-          <div class="card">
-            <div class="card-image">
-              <img [src]="producto.imagen" alt="{{producto.nombre}}">
-              <span class="card-title">{{producto.nombre}}</span>
+        <div class="col s12" style="text-align: center;"> <!-- Modificado -->
+            <div class="carousel" style="width: 700px; height: 450px; margin: 0 auto;"> <!-- Modificado -->
+                <a class="carousel-item" href="#one!"><img src="https://s3.us-east-1.amazonaws.com/contenido.ipos/fotos/866/producto/a7989cd5e8034e809fc24b1c2e6f52ab_29072020042518.jpg"></a>
+                <a class="carousel-item" href="#two!"><img src="https://masferre.com/imagen?img=39048_1.jpg"></a>
+                <a class="carousel-item" href="#three!"><img src="https://sumerlabs.com/default/image-tool-lambda?new-width=64&new-height=64&new-quality=80&url-image=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fsumer-app-90b8f.appspot.com%2Fo%2Fprofile_photos%252F5de6c30224a2d97b542740d41148f3be%252Fa67884c0-8712-11ec-91c9-8f55ba03fa2c%3Falt%3Dmedia%26token%3D9e147252-ab51-470a-b053-6f87446aaaeb"></a>
+                <a class="carousel-item" href="#four!"><img src="https://rogonsa.com.mx/wp-content/uploads/2022/12/pinturas.jpg"></a>
             </div>
-            <div class="card-content">
-              <p>{{producto.descripcion}}</p>
-              <p>Precio: {{producto.precio}}</p>
+        </div>
+        <div class="col s6">
+            <div class="" id="prueba">
+                Bienvenidos a nuestra página web dedicada a los materiales de pintura, un universo fascinante donde la creatividad y la técnica se encuentran. 
+                Desde los pigmentos más antiguos hasta las últimas innovaciones en tecnología de pintura, estamos aquí para explorar y descubrir juntos.
             </div>
-            <div class="card-action">
-              <a href="#" (click)="agregarAlCarrito(producto)">Agregar al carrito</a>
+        </div>
+    
+        <div class="row">
+            <div class="col s12">
+              <h1 id="titulo">Catálogo de Productos</h1>
+            </div>
+          
+            <div class="col s12 m6 l4" *ngFor="let producto of catalogoProductos">
+              <div class="card">
+                <div class="card-image">
+                  <img [src]="producto.imagen" alt="{{producto.nombre}}">
+                  <span class="card-title">{{producto.nombre}}</span>
+                </div>
+                <div class="card-content">
+                  <p>{{producto.descripcion}}</p>
+                  <p>Precio: {{producto.precio}}</p>
+                </div>
+                <div class="card-action">
+                  <a href="#" (click)="agregarAlCarrito(producto)">Agregar al carrito</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+    </div>
+    
       
     
 </div>

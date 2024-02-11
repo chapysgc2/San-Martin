@@ -11,7 +11,7 @@ export class ProductosService {
 
   constructor(private http: HttpClient) { }
   mostrarProductos() {
-    return this.http.get(`${environment.API_URI}/api/Productos/mostrarProductos`,{headers:headers});
+    return this.http.get(`${environment.API_URI}api/Productos/mostrarProductos`,{headers:headers});
   }
   mostrarProducto(fecha:number) {
     return this.http.get(`${environment.API_URI}/api/Productos/mostrarProducto/${fecha}`,{headers:headers});
