@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos.service';
-
+import { CarritoComprasService } from 'src/app/services/carritocompras.service';
+import { CarritoComprasComponent } from '../carritocompras/carritocompras.component';
 
 declare var M: any;
 
@@ -12,7 +13,9 @@ declare var M: any;
 export class HomeComponent implements OnInit {
   catalogoProductos:any[] = [];
 
-  constructor(private productosService: ProductosService) { }
+  constructor(private productosService: ProductosService,
+    private carritoService: CarritoComprasService
+    ) { }
 
 
 
@@ -28,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
     agregarAlCarrito(producto: any) {
+        this.carritoService.agregarProducto(producto)
   }
 }
 
