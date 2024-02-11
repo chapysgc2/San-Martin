@@ -1,13 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  padding-bottom: 64px; /* Altura del footer, ajusta según sea necesario */
 }
 
-.page-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+footer.page-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

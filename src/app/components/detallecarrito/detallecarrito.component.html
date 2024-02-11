@@ -1,20 +1,34 @@
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">Licencias</h5>
-        <p class="grey-text text-lighten-4">Aqui ponemos una descripcion</p>
+<div *ngIf="productosEnCarrito.length > 0; else carritoVacio">
+  <h2>Carrito de Compras</h2>
+  <div class="row">
+    <div class="col s12 m4" *ngFor="let producto of productosEnCarrito; let last = last">
+      <div class="card">
+        <div class="card-image">
+          <img src="../../../assets/pngwing.com.png" alt="{{ producto.nombre }}" width="70" height="300">
+        </div>
+        <div class="card-content">
+          <span class="card-title">{{ producto.nombre }}</span>
+          <p>{{ producto.descripcion }}</p>
+          <p>Precio: {{ producto.precio | currency }}</p>
+        </div>
+        <div class="card-action">
+          <button class="btn red" (click)="eliminarDelCarrito(producto.productoID)">Eliminar</button>
+        </div>
       </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">Contactenos</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" target="_blank"
-              href="https://www.facebook.com/profile.php?id=100094651059805&mibextid=hu50Ix"><i
-                class="material-icons">smartphone</i></a></li>
-        </ul>
-      </div>
+      
     </div>
   </div>
-  <div class="footer-copyright">
+</div>
+  
+<div class="row right">
+  <div class="col">
+    <button class="btn" (click)="irAlPago()">Ir al Pago</button>
+
   </div>
-</footer>
+  <div class="col">
+    <button class="btn red" (click)="vaciarCarrito()">Vaciar Carrito</button>
+  </div>
+</div>
+<ng-template #carritoVacio>
+  <p>El carrito está vacío.</p>
+</ng-template>
