@@ -11,13 +11,13 @@ import { HistorialComprasComponent } from './components/historialcompras/histori
 import { SeguimientoPedidosComponent } from './components/seguimientopedidos/seguimientopedidos.component';
 import { ReportesVentasComponent } from './components/reportesventas/reportesventas.component';
 import { SoporteClienteComponent } from './components/soportecliente/soportecliente.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routs : Routes = [
   {
     path: "",
-    redirectTo: "/home",
-    pathMatch: "full"
+    component: HomeComponent,
   },
   
   {
@@ -64,7 +64,7 @@ const routs : Routes = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forRoot(routs)
