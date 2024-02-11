@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LogueoService } from 'src/app/services/logueo.service';
-import { CarritoComprasService } from 'src/app/services/carritocompras.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,32 +8,33 @@ import { CarritoComprasService } from 'src/app/services/carritocompras.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private logueoService: LogueoService,private router:Router, private carritoService : CarritoComprasService) { }
-  bandera = false;
-  inicioseccion=1
-  cantidadProductos = 0;
+  inicioseccion: number = 1;  // Declarar como propiedad de la clase
+  name: string = '';
   ngOnInit(): void {
-    if (localStorage.getItem("id_Rol")=='0') {
-      this.bandera=true;
-    }else{
-      this.bandera=false;
-    }
-    //console.log(localStorage.getItem("id_Rol"))
-    this.logueoService.disparadorDeLogueo.subscribe(data =>{
-      //console.log(data.data)
-      this.bandera=data.data
-    })
+    // Leer el objeto almacenado en localStorage
+    const storedInicioSeccion = localStorage.getItem('info');
+ // Leer el objeto almacenado en localStorage
+ const storedInicioSeccionname = localStorage.getItem('name');
 
-    this.carritoService.productosSignals.subscribe(productos => {
-      this.cantidadProductos = productos.length;
-    });
+ // Verificar si hay un valor almacenado en localStorage
+ if (storedInicioSeccionname !== null) {
+  this.name = JSON.parse(storedInicioSeccionname).name;
+ 
+
+}
+    // Verificar si hay un valor almacenado en localStorage
+    if (storedInicioSeccion !== null) {
+      this.inicioseccion = JSON.parse(storedInicioSeccion).inicioseccion;
+    }
+  }
+  salir(){
+    const miObjeto = { footer: 1, inicioseccion: 0 };
+    localStorage.setItem('info', JSON.stringify(miObjeto));
 
   }
-  logout(){
-    //console.log("Cerrando sesion");
-    localStorage.removeItem("id_Rol")
-    localStorage.removeItem("usuario")
-    this.router.navigateByUrl('');
-    this.bandera=false
+  inicio1(){
+    const miObjeto = { footer: 0, inicioseccion: 3 };
+    localStorage.setItem('info', JSON.stringify(miObjeto));
+
   }
 }

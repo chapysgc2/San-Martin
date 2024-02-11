@@ -18,16 +18,15 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ReportesVentasComponent} from './components/reportesventas/reportesventas.component';
 import { SeguimientoPedidosComponent} from './components/seguimientopedidos/seguimientopedidos.component';
 import { SoporteClienteComponent} from './components/soportecliente/soportecliente.component';
-
+import { inicioseccion } from './components/inicio-sesion/inicio-sesion.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     AboutComponent,
-
+    inicioseccion,
     CrearCuentaComponent,
-   
     CarritoComprasComponent,
     ComprasComponent,
     DetalleCarritoComponent,
@@ -37,8 +36,6 @@ import { SoporteClienteComponent} from './components/soportecliente/soporteclien
     ReportesVentasComponent,
     SeguimientoPedidosComponent,
     SoporteClienteComponent
-
-
   ],
   imports: [
     BrowserModule,FormsModule,

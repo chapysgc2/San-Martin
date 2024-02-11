@@ -1,9 +1,9 @@
 body {
-    margin-bottom: 150px; /* Altura del footer, ajusta según sea necesario */
-  }
-  
+  padding-bottom: 64px; /* Altura del footer, ajusta según sea necesario */
+}
+
 footer.page-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
