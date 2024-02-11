@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarritoCompras } from 'src/app/models/carritocompras.models';
 import { CarritoComprasService } from 'src/app/services/carritocompras.service'; // Asegúrate de importar el servicio
 import { HttpHeaders, HttpClient } from '@angular/common/http'; // Importa los módulos necesarios
+import { Producto } from 'src/app/models/productos.models';
 
 @Component({
   selector: 'app-carritocompras',
@@ -9,7 +10,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http'; // Importa los m
   styleUrls: ['./carritocompras.component.css']
 })
 export class CarritoComprasComponent implements OnInit {
-  cantidadProductos = 0;
+  productosEnCarrito: Producto[] = [];
+  totalCarrito: number = 0;
   carrito: CarritoCompras;
 
   constructor(private carritoService: CarritoComprasService, private http: HttpClient) {
@@ -20,12 +22,25 @@ export class CarritoComprasComponent implements OnInit {
     //PRUEBAS CARRITO
     // Puedes realizar inicializaciones adicionales aquí si es necesario
     this.carritoService.productosSignals.subscribe(productos => {
-      this.cantidadProductos = productos.length;
+      this.productosEnCarrito = productos;
+      this.actualizarTotalCarrito();
+      
     })
+    
+  }
+
+  private actualizarTotalCarrito() {
+    this.totalCarrito = this.productosEnCarrito.reduce((total, producto) => total + producto.precio, 0);
   }
 
   agregarProductoAlCarrito(producto: any){
-    this.carritoService.agregarProducto("Hola");
+    const prueba = new Producto()
+    this.carritoService.agregarProducto(prueba);
+    
+  }
+
+  vaciarCarrito(){
+    this.carritoService.vaciarCarrito();
   }
 
   // Método para mostrar un carrito de compras por su ID

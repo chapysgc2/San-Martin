@@ -1,7 +1,8 @@
 <div class="carrito" >
     <span class="icono"></span>
-    <span class="cantidad">{{ cantidadProductos }}</span>
+    <span class="cantidad">{{ totalCarrito }}</span>
 </div>
 
 <!-- Pruebas carrito -->
 <a class="waves-effect waves-light btn-large" (click)="agregarProductoAlCarrito($event)">Button</a>
+<a class="waves-effect waves-light btn-large" (click)="vaciarCarrito()">Button</a>

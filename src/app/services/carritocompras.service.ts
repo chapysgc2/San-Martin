@@ -4,13 +4,14 @@ import { CarritoCompras } from "../models/carritocompras.models";
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { headers } from '../models/Header';
+import { Producto } from '../models/productos.models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CarritoComprasService {
-    private productos: any[] = [];
-    productosSignals = new BehaviorSubject<any[]>([]);
+    private productos: Producto[] = [];
+    productosSignals = new BehaviorSubject<Producto[]>([]);
     private carritoKey = 'carrito';
     
     constructor(private http: HttpClient) { 
@@ -21,14 +22,26 @@ export class CarritoComprasService {
         }
     }
 
-    agregarProducto(producto: any){
+    agregarProducto(producto: Producto){
         this.productos.push(producto);
         this.actualizarLocalStorage();
     }
 
-    eliminarProducto(index: number) {
-        this.productos.splice(index, 1);
+    eliminarProductoPorID(articulo2Eliminate: number) {
+        const index = this.productos.findIndex(producto => producto.productoID === articulo2Eliminate)
+        if (index !== -1){
+            this.productos.splice(index, 1);
+            this.actualizarLocalStorage();
+        }
+    }
+    
+    vaciarCarrito() {
+        this.productos = [];
         this.actualizarLocalStorage();
+    }
+    
+    calcularTotal(): number {
+        return this.productos.reduce((total, producto) => total + producto.precio, 0);
     }
 
     private actualizarLocalStorage() {

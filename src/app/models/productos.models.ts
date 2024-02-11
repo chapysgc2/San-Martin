@@ -6,13 +6,15 @@ export class Producto{
     color: string;
     especificaciones: string;
     stock: number;
+    
     constructor() {
-    this.productoID = 0;
-    this.nombre= '';
-    this.descripcion = '';
-    this.precio = 0;
-    this.color = '';
-    this.especificaciones = '';
-    this.stock = 0;
+        this.productoID = 1;
+        this.nombre= 'Pintura chingona';
+        this.descripcion = 'Pintura pa los más chingones';
+        this.precio = 666;
+        this.color = 'Negra';
+        this.especificaciones = 'Usese con precaución';
+        this.stock = 2;
     }
+    
 }
