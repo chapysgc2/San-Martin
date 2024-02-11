@@ -1,0 +1,118 @@
+<div class="row">
+    <h4>Crear un nuevo usuario</h4>
+    <a href="#modalCrearUsuario" class="waves-effect waves-light btn modal-trigger  red darken-4"><i class="material-icons" (click)="crearUsuario()">add</i></a>
+</div>
+
+<table class="striped" *ngIf="usuarios != undefined">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usu of usuarios">
+            <td>{{usu.idU}}</td>
+            <td>{{usu.nombreU}}</td>
+            <td>{{usu.email}}</td>
+            <td>{{usu.contrasenaU}}</td>
+            <td>{{roles[usu.rolU].rol}}</td>
+            <td><a href="#modalModificarUsuario" class="space waves-effect waves-light btn modal-trigger red darken-1" (click)="actualizarUsuario(usu.idU)">
+                    <i class="material-icons">edit</i></a></td>
+            <td><a href="javascript: void(0);" class="space waves-effect waves-light btn red darken-1" (click)="eliminarUsuario(usu.idU)">
+                    <i class="material-icons">delete_forever</i></a></td>
+        </tr>
+    </tbody>
+</table>
+<div id="modalModificarUsuario" class="modal">
+    <div class="modal-content">
+        <div class="row" style="margin-bottom: 0px !important;">
+            <div class="col s12">
+                <h5 class="center">Actualizar Usuario</h5>
+            </div>
+        </div>
+        <div style="border: .5px solid #78909c; padding: 10px;">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="active" for="nombre_empresa">Usuario </label>
+                    <input id="nombre_empresa" [(ngModel)]="usuario.nombreU" type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                    <label class="active">Contraseña </label>
+                    <input [(ngModel)]="usuario.contrasenaU" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                    <label class="active">Email</label>
+                    <input [(ngModel)]="usuario.email" type="text" class="validate">
+                </div>
+                <div class="row col s6">
+                    <label class="active">Rol </label>
+                    <select [(ngModel)]="usuario.rolU" class="browser-default"> <!-- broser-default porque es un arreglo-->
+                        <option *ngFor="let rol of roles" [value]="rol.idR"> <!--Para poner el valor de cada elemento del arreglo-->
+                          {{rol.rol}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 center">
+                    <button type="submit" class="waves-effect btn-large red lighten-3 modal-close black-text"
+                        (click)="guardarActualizarUsuario()">Enviar</button>
+                </div>
+                <div class="col s6 center">
+                    <button class="modal-action modal-close waves-effect btn-large red lighten-3
+    black-text">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalCrearUsuario" class="modal">
+    <div class="modal-content">
+      <div class="row" style="margin-bottom: 0px !important;">
+        <div class="col s12">
+          <h5 class="center">Crear Usuario</h5>
+        </div>
+      </div>
+      <div style="border: .5px solid #78909c; padding: 10px;">
+        <div class="row">
+          <div class="input-field col s12">
+            <label class="active" for="nombre_usuario">Nombre </label>
+            <input id="nombre_usuario" [(ngModel)]="usuarioNuevo.nombreU" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label class="active">Correo </label>
+            <input [(ngModel)]="usuarioNuevo.email" type="text" class="validate">
+          </div>
+          <div class="row col s6">
+            <label class="active">Rol </label>
+            <select [(ngModel)]='usuarioNuevo.rolU' class="browser-default"> <!-- broser-default porque es un arreglo-->
+                <option *ngFor="let rol of roles" [value]="rol.idR"> <!--Para poner el valor de cada elemento del arreglo-->
+                  {{rol.rol}}
+                </option>
+            </select>
+          </div>
+          <div class="input-field col s6">
+            <label class="active">Contraseña </label>
+            <input [(ngModel)]="usuarioNuevo.contrasenaU" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center">
+            <button type="submit" class="waves-effect btn-large red lighten-3 modal-close black-text"
+              (click)="guardarNuevoUsuario()"></button>
+          </div>
+          <div class="col s6 center">
+            <button class="modal-action modal-close waves-effect btn-large red lighten-3
+    black-text">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  

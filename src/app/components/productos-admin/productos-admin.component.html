@@ -1,0 +1,136 @@
+<div class="row">
+    <h4>Crear un Nuevo Producto</h4>
+    <a href="#modalCrearProducto" class="waves-effect waves-light btn modal-trigger red darken-4"><i class="material-icons" (click)="crearProducto()">add</i></a>
+</div>
+
+<table class="default" *ngIf="productos != undefined">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Tamaño</th>
+            <th>Categoria</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let prod of productos">
+        <td>{{prod.idP}}</td>
+        <td>{{prod.nombreP}}</td>
+        <td>{{prod.precioP}}</td>
+        <td>{{prod.descripcionP}}</td>
+        <td>{{prod.tamanoP}}</td>
+        <td>{{categorias[prod.categoriaP].categoria}}</td>
+        <td>{{prod.cantidadP}}</td>
+        <td><a href="#modalModificarProducto" class="space waves-effect waves-light btn modal-trigger red darken-1" (click)="actualizarProducto(prod.idP)">
+                <i class="material-icons">edit</i></a></td>
+        <td><a href="javascript: void(0);" class="space waves-effect waves-light btn red darken-1" (click)="eliminarProducto(prod.idP)">
+                <i class="material-icons">delete_forever</i></a></td>
+    </tr>
+    </tbody>
+</table>
+<div id="modalModificarProducto" class="modal">
+    <div class="modal-content">
+        <div class="row" style="margin-bottom: 0px !important;">
+            <div class="col s12">
+                <h5 class="center">Actualizar Empresa</h5>
+            </div>
+        </div>
+        <div style="border: .5px solid #78909c; padding: 10px;">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="active" for="nombre_empresa">Nombre </label>
+                    <input id="nombre_empresa" [(ngModel)]="producto.nombreP" type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                    <label class="active">Descripcion </label>
+                    <input [(ngModel)]="producto.descripcionP" type="text" class="validate">
+                </div>
+                <div class="row col s6">
+                    <label class="active">Categoria </label>
+                    <select [(ngModel)]='producto.categoriaP' class="browser-default"> <!-- broser-default porque es un arreglo-->
+                        <option *ngFor="let categoria of categorias" [value]="categoria.idC"> <!--Para poner el valor de cada elemento del arreglo-->
+                          {{categoria.categoria}}
+                        </option>
+                    </select>
+                  </div>
+                <div class="input-field col s6">
+                    <label class="active">Precio </label>
+                    <input [(ngModel)]="producto.precioP" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                    <label class="active">Tamaño</label>
+                    <input [(ngModel)]="producto.tamanoP" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                    <label class="active">Unidades del Producto</label>
+                    <input [(ngModel)]="producto.cantidadP" type="text" class="validate">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 center">
+                    <input type="submit" class="waves-effect btn-large red lighten-3 modal-close"
+                        (click)="guardarActualizarProducto()" value="Enviar">
+                </div>
+                <div class="col s6 center">
+                    <a class="modal-action modal-close waves-effect btn-large red lighten-3
+    black-text">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalCrearProducto" class="modal">
+    <div class="modal-content">
+      <div class="row" style="margin-bottom: 0px !important;">
+        <div class="col s12">
+          <h5 class="center">Crear Usuario</h5>
+        </div>
+      </div>
+      <div style="border: .5px solid #78909c; padding: 10px;">
+        <div class="row">
+          <div class="input-field col s12">
+            <label class="active" for="nombre_usuario">Nombre </label>
+            <input id="nombre_usuario" [(ngModel)]="productoNuevo.nombreP" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label class="active">Pequeña Descripcion </label>
+            <input [(ngModel)]="productoNuevo.descripcionP" type="text" class="validate">
+          </div>
+          <div class="row col s6">
+            <label class="active">Categoria </label>
+            <select [(ngModel)]='productoNuevo.categoriaP' class="browser-default"> <!-- broser-default porque es un arreglo-->
+                <option *ngFor="let categoria of categorias" [value]="categoria.idC"> <!--Para poner el valor de cada elemento del arreglo-->
+                  {{categoria.categoria}}
+                </option>
+            </select>
+          </div>
+          <div class="input-field col s6">
+            <label class="active">Precio </label>
+            <input [(ngModel)]="productoNuevo.precioP" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+            <label class="active">Tamaño </label>
+            <input [(ngModel)]="productoNuevo.tamanoP" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+            <label class="active">Unidades del Producto </label>
+            <input [(ngModel)]="productoNuevo.cantidadP" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center">
+            <button type="submit" class="waves-effect btn-large red lighten-3 modal-close black-text"
+              (click)="guardarNuevoProducto()">Enviar</button>
+          </div>
+          <div class="col s6 center">
+            <button class="modal-action modal-close waves-effect btn-large red lighten-3
+    black-text">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

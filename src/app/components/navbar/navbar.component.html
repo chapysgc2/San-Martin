@@ -1,0 +1,16 @@
+<nav>
+    <div class="nav-wrapper red darken-4">
+        <a class="brand-logo" href="/home"><img src="./assets/pngwing.com.png" id="imagen-logo" alt="logo-temp"></a>
+        <ul id="nav-mobile" *ngIf="bandera==false"  class="right hide-on-med-and-down">
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+            <li><a href="/productos">Productos</a></li>
+            <li><a href="inicioSesion">Iniciar Sesion</a></li>
+        </ul>
+        <ul id="nav-mobile" *ngIf="bandera==true"  class="right hide-on-med-and-down">
+            <li><a href="/homeAd/usuariosAd">Usuarios</a></li>
+            <li><a href="/homeAd/productosAd">Productos</a></li>
+            <li><a href="javascript: void(0);" (click)="logout()">Salir</a></li>
+        </ul>
+    </div>
+</nav>

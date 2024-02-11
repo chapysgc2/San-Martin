@@ -1,0 +1,11 @@
+{
+    "/api/*": {
+        "target": "http://www.festersanmartin.com:3306",
+        "secure": false,
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "changeOrigin": false,
+        "logLevel": "debug"
+    }
+}
