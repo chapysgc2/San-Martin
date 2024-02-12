@@ -6,6 +6,7 @@ export class Producto{
     color: string;
     especificaciones: string;
     stock: number;
+    imagen: string;
     
     constructor() {
         this.productoID = 1;
@@ -15,6 +16,7 @@ export class Producto{
         this.color = 'Negra';
         this.especificaciones = 'Usese con precaución';
         this.stock = 2;
+        this.imagen = 'https://pintumex.com.mx/tienda/wp-content/uploads/2021/04/Tr%C3%A1fico.jpg';
     }
     
 }
