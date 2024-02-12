@@ -26,8 +26,12 @@ export class DetalleCarritoComponent implements OnInit {
     });
   }
 
+  obtenerTotal(){
+    this.carritoService.calcularTotal();
+  }
+
   irAlPago(){
-    
+
   }
 
   eliminarDelCarrito(productoID: number) {
